@@ -1,0 +1,15 @@
+#!/bin/bash
+SPARK_DIRNAME=${PARCEL_DIRNAME:-"YSPARK-2.0.1-cdh5.4.3.d10.28"}
+export CDH_HADOOP_HOME=$PARCELS_ROOT/CDH/lib/hadoop
+export CDH_MR1_HOME=$PARCELS_ROOT/CDH/lib/hadoop-0.20-mapreduce
+export CDH_HDFS_HOME=$PARCELS_ROOT/CDH/lib/hadoop-hdfs
+export CDH_MR2_HOME=$PARCELS_ROOT/CDH/lib/hadoop-mapreduce
+export CDH_YARN_HOME=$PARCELS_ROOT/CDH/lib/hadoop-yarn
+export CDH_HBASE_HOME=$PARCELS_ROOT/CDH/lib/hbase
+export CDH_HIVE_HOME=$PARCELS_ROOT/CDH/lib/hive
+export CDH_HUE_HOME=$PARCELS_ROOT/CDH/lib/hue
+export CDH_HUE_PLUGINS_HOME=$PARCELS_ROOT/CDH/lib/hadoop
+export CDH_HADOOP_BIN=$CDH_HADOOP_HOME/bin/hadoop
+export CDH_SPARK_HOME=$PARCELS_ROOT/$SPARK_DIRNAME/lib/spark
+export CDH_PARQUET_HOME=$PARCELS_ROOT/CDH/lib/parquet
+export CDH_AVRO_HOME=$PARCELS_ROOT/CDH/lib/avro

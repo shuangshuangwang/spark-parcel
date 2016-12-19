@@ -1,0 +1,38 @@
+{
+   "pyspark": {
+      "destination": "/usr/bin/pyspark",
+      "source": "bin/pyspark",
+      "priority": 20,
+      "isDirectory": false
+    }
+    ,"spark-executor": {
+      "destination": "/usr/bin/spark-executor",
+      "source": "bin/spark-executor",
+      "priority": 20,
+      "isDirectory": false
+    }
+    ,"spark-shell": {
+      "destination": "/usr/bin/spark-shell",
+      "source": "bin/spark-shell",
+      "priority": 20,
+      "isDirectory": false
+    }
+    ,"spark-sql": {
+      "destination": "/usr/bin/spark-sql",
+      "source": "bin/spark-sql",
+      "priority": 20,
+      "isDirectory": false
+    }
+    ,"spark-submit": {
+      "destination": "/usr/bin/spark-submit",
+      "source": "bin/spark-submit",
+      "priority": 20,
+      "isDirectory": false
+    }
+    ,"spark-conf": {
+      "destination": "/etc/spark/conf",
+      "source": "etc/spark/conf.dist",
+      "priority": 20,
+      "isDirectory": true
+    }
+}

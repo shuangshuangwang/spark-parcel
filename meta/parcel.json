@@ -1,0 +1,61 @@
+{
+  "schema_version":     1,
+  "name":               "YSPARK",
+  "version":            "2.0.1-cdh5.4.3.d10.28",
+  "extraVersionInfo": {
+    "fullVersion":        "YSPARK-2.0.1-cdh5.4.3.d10.28-el6",
+    "baseVersion":        "yspark2.0.1",
+    "patchCount":         "0"
+  },
+
+  "replaces":           "YSPARK",
+
+  "setActiveSymlink":   true,
+
+  "scripts": {
+    "defines": "cdh_env.sh"
+  },
+
+  "packages": [
+    { "name":    "spark-core",
+      "version": "1.6.0+cdh5.7.0+180"
+    }
+    ,{ "name":    "spark-history-server",
+      "version": "1.6.0+cdh5.7.0+180"
+    }
+    ,{ "name":    "spark-master",
+      "version": "1.6.0+cdh5.7.0+180"
+    }
+    ,{ "name":    "spark-python",
+      "version": "1.6.0+cdh5.7.0+180"
+    }
+    ,{ "name":    "spark-worker",
+      "version": "1.6.0+cdh5.7.0+180"
+    }
+  ],
+
+  "components": [
+    { "name":     "spark",
+      "version":  "1.6.0-cdh5.7.0",
+      "pkg_version":  "1.6.0+cdh5.7.0+180",
+      "pkg_release": "1.cdh5.7.0.p0.84"
+    }
+  ],
+
+  "provides": [
+    "yspark"
+  ],
+
+  "users": {
+     "spark": {
+       "longname"    : "Spark",
+       "home"        : "/var/lib/spark",
+       "shell"       : "/sbin/nologin",
+       "extra_groups": [ ]
+     }
+  },
+
+  "groups": [
+     "spark"
+  ]
+}
