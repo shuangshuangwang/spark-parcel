@@ -9,7 +9,7 @@ MAKE_PARCEL_DIR=`pwd`
 SPARK_SOURCE_DIR=${MAKE_PARCEL_DIR}/submodule-spark
 SPARK_PARCEL_DIR=/var/www/html/spark
 cd ${SPARK_SOURCE_DIR}
-./dev/make-distribution.sh --mvn mvn --tgz -Pyarn -Phive -Phive-thriftserver -Phadoop-2.6 -Phadoop-provided   -Pflume-provided  -Dhadoop.version=2.6.0-cdh5.4.3 -Djava.version=1.8 -DskipTests -e
+# ./dev/make-distribution.sh --mvn mvn --tgz -Pyarn -Phive -Phive-thriftserver -Phadoop-2.6 -Phadoop-provided   -Pflume-provided  -Dhadoop.version=2.6.0-cdh5.4.3 -Djava.version=1.8 -DskipTests -e
 
 SPARK_NAME=$(ls -art  | grep .tgz | tail -n 1)
 echo "The latest spark package is: ${SPARK_NAME}"
@@ -27,7 +27,7 @@ SPARK_DEPLOY_PARCEL_PATH=${SPARK_PARCEL_DIR}/deploy/${PARCEL_NAME}
 rm -rf ${SPARK_DEPLOY_PATH}/*
 
 tar -zxf ${SPARK_NAME} -C ${SPARK_DEPLOY_PATH}
-rsync -av --exclude='make-parcel.sh' --exclude='submodule-cm_ext' --exclude='submodule-spark' ${MAKE_PARCEL_DIR}/*  ${SPARK_DEPLOY_PARCEL_PATH}
+rsync -av --exclude='make-parcel.sh' --exclude='submodule-cm_ext' --exclude='submodule-spark' --exclude='spark-integration-testing'  ${MAKE_PARCEL_DIR}/*  ${SPARK_DEPLOY_PARCEL_PATH}
 
 for dir in `ls ${SPARK_DEPLOY_ORIGINAL_PATH}`; do
    if [ -d ${SPARK_DEPLOY_ORIGINAL_PATH}/${dir} -a "conf" != "${dir}" -a "licenses" != "${dir}" ]; then
@@ -44,3 +44,5 @@ rm -rf ${SPARK_DEPLOY_ORIGINAL_PATH}
 tar -zcf ${PARCEL_NAME}-el6.parcel ${PARCEL_NAME}  --remove-files 
 sha1sum ${SPARK_DEPLOY_PATH}/${PARCEL_NAME}-el6.parcel | awk -F" " '{print $1}' > ${SPARK_DEPLOY_PATH}/${PARCEL_NAME}-el6.parcel.sha
 /opt/cloudera/parcels/Anaconda/bin/python2.7 ${MAKE_PARCEL_DIR}/submodule-cm_ext/make_manifest/make_manifest.py ${SPARK_DEPLOY_PATH}
+
+export PARCEL_VERSION=${PARCEL_VERSION}
