@@ -21,8 +21,15 @@ HADOOP_VERSION=$(echo "${SPARK_NAME}" | awk -F '-' '{print $4;}')
 CDH_VERSION=$(echo "${SPARK_NAME}" | awk -F '-' '{print $5;}')
 CDH_VERSION=$(echo ${CDH_VERSION:0:8})
 SPARK_BRANCH=$(git branch | grep '\*' | awk '{print $2}')
-PARCEL_VERSION="${SPARK_VERSION}-${CDH_VERSION}.d$(date '+%Y%m%d-%H.%M.%S')-${SPARK_BRANCH}-$(git log --format="%H" -n 1)"
-PARCEL_NAME="YSPARK-${PARCEL_VERSION}"
+if [ -n "$1" ] ;then
+  echo "Use custom parcel name."
+  index=$(expr index $1 '-')
+  PARCEL_VERSION=$(echo ${1:7})
+  PARCEL_NAME=$1
+else
+  PARCEL_VERSION="${SPARK_VERSION}-${CDH_VERSION}.d$(date '+%Y%m%d-%H.%M.%S')-${SPARK_BRANCH}-$(git log --format="%H" -n 1)"
+  PARCEL_NAME="YSPARK-${PARCEL_VERSION}"
+fi
 SPARK_DEPLOY_PATH=${SPARK_PARCEL_DIR}/deploy
 SPARK_DEPLOY_ORIGINAL_PATH=${SPARK_DEPLOY_PATH}/${SPARK_NAME%.*}
 SPARK_DEPLOY_PARCEL_PATH=${SPARK_PARCEL_DIR}/deploy/${PARCEL_NAME}
