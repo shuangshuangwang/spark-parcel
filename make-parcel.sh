@@ -27,7 +27,7 @@ if [ -n "$1" ] ;then
   PARCEL_VERSION=$(echo ${1:7})
   PARCEL_NAME=$1
 else
-  PARCEL_VERSION="${SPARK_VERSION}-${CDH_VERSION}.d$(date '+%Y%m%d-%H.%M.%S')-${SPARK_BRANCH}-$(git log --format="%H" -n 1)"
+  PARCEL_VERSION="${SPARK_VERSION}-${CDH_VERSION}.d$(date '+%Y%m%d-%H.%M.%S')-${SPARK_BRANCH}-$(git rev-parse --short HEAD)"
   PARCEL_NAME="YSPARK-${PARCEL_VERSION}"
 fi
 SPARK_DEPLOY_PATH=${SPARK_PARCEL_DIR}/deploy
