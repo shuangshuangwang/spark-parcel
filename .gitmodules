@@ -1,6 +1,6 @@
 [submodule "cm_ext"]
 	path = submodule-cm_ext
-	url = https://github.com/wangyum/cm_ext.git
+	url = https://github.com/shuangshuangwang/cm_ext.git
 [submodule "spark"]
 	path = submodule-spark 
-	url = https://github.com/wangyum/spark.git
+	url = https://github.com/shuangshuangwang/spark.git
